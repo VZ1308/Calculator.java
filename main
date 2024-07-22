@@ -1,0 +1,58 @@
+ String choice;
+        while (true) {
+            System.out.print("Bitte wählen Sie, welche Rechenart (+, -, *, /) Sie wählen wollen: ");
+            choice = scanner.nextLine();
+            if (choice.equals("+") || choice.equals("-") || choice.equals("*") || choice.equals("/")) {
+                break; // Gültige Eingabe, Schleife verlassen
+            } else {
+                System.out.println("Ungültige Eingabe. Bitte wählen Sie eine der folgenden Rechenarten: +, -, *, /");
+            }
+        }
+
+        // Eingabe der ersten Zahl
+        double zahl1 = 0;
+        while (true) {
+            System.out.print("Bitte geben Sie die erste Zahl für die Berechnung ein: ");
+            try {
+                zahl1 = scanner.nextDouble();
+                break; // Gültige Eingabe, Schleife verlassen
+            } catch (InputMismatchException e) {
+                System.out.println("Ungültige Eingabe. Bitte geben Sie eine gültige Zahl ein.");
+                scanner.next(); // Ungültige Eingabe verwerfen
+            }
+        }
+
+        // Eingabe der zweiten Zahl
+        double zahl2 = 0;
+        while (true) {
+            System.out.print("Bitte geben Sie die zweite Zahl für die Berechnung ein: ");
+            try {
+                zahl2 = scanner.nextDouble();
+                break; // Gültige Eingabe, Schleife verlassen
+            } catch (InputMismatchException e) {
+                System.out.println("Ungültige Eingabe. Bitte geben Sie eine gültige Zahl ein.");
+                scanner.next(); // Ungültige Eingabe verwerfen
+            }
+        }
+
+        // Berechnung und Ausgabe basierend auf der gewählten Rechenart
+        double ergebnis = 0;
+        switch (choice) {
+            case "+":
+                ergebnis = zahl1 + zahl2;
+                break;
+            case "-":
+                ergebnis = zahl1 - zahl2;
+                break;
+            case "*":
+                ergebnis = zahl1 * zahl2;
+                break;
+            case "/":
+                if (zahl2 != 0) {
+                    ergebnis = zahl1 / zahl2;
+                } else {
+                    System.out.println("Division durch Null ist nicht erlaubt.");
+                    return; // Programm beenden, um Division durch Null zu vermeiden
+                }
+                break;
+        }
