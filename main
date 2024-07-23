@@ -17,9 +17,9 @@ public class Main {
         if (now.isBefore(LocalTime.NOON)) {
             begruessung = "        -----Taschenrechner-----        \nGuten Morgen!";
         } else if (now.isBefore(LocalTime.of(18, 0))) {
-            begruessung = "Guten Tag!";
+            begruessung = "        -----Taschenrechner-----       \nGuten Tag!";
         } else {
-            begruessung = "Guten Abend!";
+            begruessung = "        -----Taschenrechner-----       \nGuten Abend!";
         }
 
         // Datum formatieren
@@ -90,7 +90,6 @@ public class Main {
         }
 
         // Ergebnis ausgeben
-        System.out.println("Das Ergebnis der Berechnung " + zahl1 + " " + choice + " " + zahl2 + " ist: " + ergebnis);
+        System.out.println("Das Ergebnis der Berechnung " + zahl1 + " " + choice + " " + zahl2 + " = " + ergebnis);
     }
 }
-
