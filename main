@@ -1,4 +1,36 @@
- String choice;
+import java.util.Scanner;
+import java.util.InputMismatchException;
+import java.time.LocalTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // aktuelles Datum und Uhrzeit holen
+        LocalDate today = LocalDate.now();
+        LocalTime now = LocalTime.now();
+
+        // Begrüßung basierend auf der Tageszeit
+        String begruessung;
+        if (now.isBefore(LocalTime.NOON)) {
+            begruessung = "        -----Taschenrechner-----        \nGuten Morgen!";
+        } else if (now.isBefore(LocalTime.of(18, 0))) {
+            begruessung = "Guten Tag!";
+        } else {
+            begruessung = "Guten Abend!";
+        }
+
+        // Datum formatieren
+        DateTimeFormatter datumFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        String datum = today.format(datumFormatter);
+
+        // Begrüßung und Datum ausgeben
+        System.out.println(begruessung + " Heute haben wir den " + datum + "!");
+
+        // Rechenart auswählen
+        String choice;
         while (true) {
             System.out.print("Bitte wählen Sie, welche Rechenart (+, -, *, /) Sie wählen wollen: ");
             choice = scanner.nextLine();
@@ -56,3 +88,9 @@
                 }
                 break;
         }
+
+        // Ergebnis ausgeben
+        System.out.println("Das Ergebnis der Berechnung " + zahl1 + " " + choice + " " + zahl2 + " ist: " + ergebnis);
+    }
+}
+
